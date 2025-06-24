@@ -1,0 +1,23 @@
+<div class="search-title">Hot Artists this week</div>
+<br />
+<section style="margin-top: 0px; padding: 0px; overflow-x: scroll">
+  {% for artist in top_artists %}
+  <!-- Artist Card -->
+  <a
+    href="{% url 'artist' artist.id%}?name={{artist.name|urlencode}}&image={{artist.image|urlencode}}"
+  >
+    <div class="artist-card">
+      <img
+        src="{{artist.image|default:'/static/img/placeholder.jpg'}}"
+        alt="{{artist.name}}"
+        style="width: 150px; height: 150px; border-radius: 50%"
+      />
+      <div class="artist-info">
+        <div class="artist-name">{{artist.name}}</div>
+        <div class="artist-title">Artist</div>
+      </div>
+    </div>
+  </a>
+
+  {% endfor %}
+</section>

@@ -1,0 +1,9 @@
+<div class="browse-all-title">Top Albums this week</div>
+<div class="browse-all">
+  {% for album in top_albums %}
+  <div class="category-card">
+    <img src="{{album.image}}" alt="Podcasts" />
+    <div class="category-title">{{album.name}}</div>
+  </div>
+  {% endfor %}
+</div>

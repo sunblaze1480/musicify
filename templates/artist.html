@@ -1,0 +1,62 @@
+{%extends 'base.html'%} {%block content%}
+<div class="flex">
+  <!-- Artist Header -->
+  <div class="relative">
+    <!-- Increased height with inline style -->
+    <img src="{{image|default:'/static/img/placeholder.jpg'}}" alt="{{name}}" />
+    <div
+      class="absolute bottom-0 p-5 w-full"
+      style="background: rgba(0, 0, 0, 0.5)"
+    >
+      <div class="flex items-center">
+        <span class="text-sm text-gray-300 ml-1">Verified Artist</span>
+      </div>
+      <h1 class="text-5xl font-bold text-white mt-2">{{name}}</h1>
+      <p class="text-gray-300">213,678 monthly listeners</p>
+    </div>
+  </div>
+  <!-- Popular Tracks Section -->
+  <div class="p-5">
+    <h2 class="text-2xl font-bold mb-4">Most listened tracks</h2>
+
+    <div class="relative overflow-x-auto">
+      <table class="w-full text-sm text-left rtl:text-right">
+        <thead class="uppercase">
+          <tr>
+            <th scope="col" class="px-6 py-3">Name</th>
+            <th scope="col" class="px-6 py-3">Playbacks</th>
+            <th scope="col" class="px-6 py-3">Duration</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for track in top_tracks %}
+          <tr class="hover:bg-gray-800">
+            <td scope="col" class="px-6 py-3">
+              <a href="{% url  'track' track.id %}"> {{track.name}}</a>
+            </td>
+            <td scope="col" class="px-6 py-3">
+              {{track.stats.rate_listened_total}}
+            </td>
+            <td scope="col" class="px-6 py-3">{{track.duration}}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<div>
+  <h2>Albums</h2>
+  <div class="flex p-4">
+    {% for album in albums %}
+    <a href="{% url 'album' album.id%}">
+      <div class="p-4">
+        <img src="{{album.image}}" alt="{{album.name}}" />
+        <h4>{{album.name}}</h4>
+        <p>{{album.releaseDate}}</p>
+      </div>
+    </a>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

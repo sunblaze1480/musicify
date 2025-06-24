@@ -1,0 +1,23 @@
+{% extends 'base.html' %} {% block content %}
+<div class='ml-6'>  
+  <img src="{{track.album_image}}" />
+  <p class='track-title'> {{track.name}} </p>
+  <div class='mb-6'>  
+    {% if track.artist_id %}
+      <a href="{% url 'artist' track.artist_id %}">
+        <span class="artist-name">{{ track.artist_name }}</span>
+      </a>
+    {% else %}
+      <span class="artist-name">{{ track.artist_name }}</span>
+    {% endif %}  
+  <p><small>Album </small></p><a href={% url 'album' track.album_id %}>
+  <span>{{track.album_name}}</span></a>
+  </div>
+  <div>
+    <audio controls>
+      <source src="{{ track.audio }}" type="audio/mpeg" />
+      Your browser does not support the audio element.
+    </audio>
+  </div>
+</div>
+{% endblock %}

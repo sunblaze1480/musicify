@@ -1,0 +1,74 @@
+{% extends 'base.html' %} {% block content %}
+<div class="p-5">
+  <h2 class="text-2xl font-bold mb-4">Search Results for "{{ keyword }}"</h2>
+  <hr />
+  <div class="divide-y divide-gray-800">
+    <!-- Tracks Section -->
+    <!-- Tracks Section -->
+    <div class="py-4">
+      <h2 class="font-bold text-lg mb-2">Tracks</h2>
+      {% if tracks %}
+      <ul
+        class="divide-y divide-gray-700 border border-gray-800 rounded-md overflow-hidden"
+      >
+        {% for track in tracks %}
+        <li
+          class="flex items-center justify-between px-4 py-3 hover:bg-gray-800 transition"
+        >
+          <div>
+            <p class="text-base font-medium text-white">{{ track.name }}</p>
+            <p class="text-sm text-gray-400">{{ track.artist_name }}</p>
+          </div>
+          {% if track.audio %}
+          <audio controls class="h-6">
+            <source src="{{ track.audio }}" type="audio/mpeg" />
+          </audio>
+          {% endif %}
+        </li>
+        {% endfor %}
+      </ul>
+      {% else %}
+      <p class="text-sm text-gray-500">No tracks found</p>
+      {% endif %}
+    </div>
+
+    <!-- Artists Section -->
+    <div class="py-4">
+      <h2 class="font-bold text-lg mb-2">Artists</h2>
+
+      {% if artists %}
+      <ul
+        class="divide-y divide-gray-700 border border-gray-800 rounded-md overflow-hidden"
+      >
+        {% for artist in artists %}
+        <li class="px-4 py-3 hover:bg-gray-800 transition">
+          <p class="text-base font-medium text-white">{{ artist.name }}</p>
+        </li>
+        {% endfor %}
+      </ul>
+      {% else %}
+      <p class="text-sm text-gray-500">No artists found</p>
+      {% endif %}
+    </div>
+
+    <!-- Albums Section -->
+    <div class="py-4">
+      <h2 class="font-bold text-lg mb-2">Albums</h2>
+
+      {% if albums %}
+      <ul
+        class="divide-y divide-gray-700 border border-gray-800 rounded-md overflow-hidden"
+      >
+        {% for album in albums %}
+        <li class="px-4 py-3 hover:bg-gray-800 transition">
+          <p class="text-base font-medium text-white">{{ album.name }}</p>
+        </li>
+        {% endfor %}
+      </ul>
+      {% else %}
+      <p class="text-sm text-gray-500">No albums found</p>
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% endblock %}

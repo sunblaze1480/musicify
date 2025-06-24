@@ -1,0 +1,40 @@
+{% load static %}
+<div class="sidebar">
+  <!-- Musicify Logo -->
+  <div class="logo-container">
+    <img
+      src="{% static 'img/logo.png' %}"
+      alt="Musicify Logo"
+      style="width: 100%; height: auto; padding: 20px; box-sizing: border-box"
+    />
+  </div>
+
+  <!-- Welcome User -->
+  <div class="sidebar-section">
+    <span style="margin-left: 14px" class="sidebar-link-icon">👤</span>
+    <b>Welcome, {{user}}</b>
+    <br />
+    <br />
+
+    <a href="{% url 'logout' %}">
+      <span class="sidebar-link-icon">↪️</span>
+      <b>Logout</b>
+    </a>
+  </div>
+
+  <!-- Top section of the sidebar -->
+  <div class="sidebar-section">
+    <a href="/" class="sidebar-link active">
+      <span class="sidebar-link-icon">🏠</span>
+      Home
+    </a>
+    <a href="#" class="sidebar-link">
+      <span class="sidebar-link-icon">🔍</span>
+      Search
+    </a>
+    <a href="#" class="sidebar-link">
+      <span class="sidebar-link-icon">🎵</span>
+      Your Library
+    </a>
+  </div>
+</div>

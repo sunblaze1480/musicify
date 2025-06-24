@@ -1,0 +1,44 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://rsms.me/" />
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
+    <title>Musicify</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.1.4/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body
+    style="
+      margin: 0;
+      padding: 0;
+      background: #121212;
+      font-family: Arial, sans-serif;
+      color: #fff;
+    "
+  >
+    {% include 'sidebar.html' %}
+    <div style="margin-left: 240px; padding: 20px">
+      <header class="header-container">
+        <div class="search-bar" style="width: 390px">
+          <form action="{% url 'search' %}">
+            <input
+              type="search"
+              placeholder="What do you want to listen to?"
+              name="keyword"
+              aria-label="Search"
+            />
+            <button type="submit" aria-label="Search">🔍</button>
+          </form>
+        </div>
+      </header>
+      <main style="padding-top: 20px">{%block content%} {%endblock%}</main>
+    </div>
+  </body>
+</html>
